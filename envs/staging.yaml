@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: git@gitlab.com:Dcryptic/nht-ci-assignment.git
+    repoURL: https://github.com/d-cryptic/argo-practice.git
     targetRevision: HEAD
     path: overlays/staging
   destination:

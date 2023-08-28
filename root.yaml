@@ -7,7 +7,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: git@tree.mn:barun.d/argocd-nht-assignment.git
+    repoURL: https://github.com/d-cryptic/argo-practice.git
     targetRevision: HEAD
     path: envs
   destination:
