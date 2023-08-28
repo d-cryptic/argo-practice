@@ -9,7 +9,7 @@ spec:
   generators:
     - git:
         repoURL: https://github.com/d-cryptic/argo-practice.git
-        revision: master
+        revision: HEAD
         files:
           - path: applicationsets/**/**/config.json
   template:
@@ -19,7 +19,7 @@ spec:
     spec:
       destination:
         namespace: "{{namespace}}"
-        server: https://kubernetes.default.svc
+        name: "{{cluster}}"
       project: "{{project}}"
       source:
         path: "{{path}}"
