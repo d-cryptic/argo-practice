@@ -1,0 +1,6 @@
+{
+  "namespace": "prod",
+  "name": "hooks",
+  "project": "default",
+  "cluster": "in-cluster"
+}

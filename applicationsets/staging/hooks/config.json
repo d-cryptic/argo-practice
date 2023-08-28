@@ -1,0 +1,6 @@
+{
+  "namespace": "staging",
+  "name": "hooks",
+  "project": "default",
+  "cluster": "gke_prometheus-396605_us-central1-c_cluster-2"
+}

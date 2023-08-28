@@ -1,0 +1,41 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: applicationset-root
+  namespace: argocd
+spec:
+  syncPolicy:
+    preserveResourcesOnDeletion: true
+  generators:
+    - git:
+        repoURL: https://github.com/d-cryptic/argo-practice.git
+        revision: master
+        files:
+          - path: applicationsets/staging/deployments/config.json
+          - path: applicationsets/staging/hooks/config.json
+          - path: applicationsets/prod/deployments/config.json
+          - path: applicationsets/prod/hooks/config.json
+  template:
+    metadata:
+      name: "{{name}}"
+      namespace: argocd
+    spec:
+      destination:
+        namespace: "{{namespace}}"
+        name: "{{cluster}}"
+      project: "{{project}}"
+      source:
+        path: "{{path}}"
+        repoURL: https://github.com/d-cryptic/argo-practice.git
+        targetRevision: master
+        directory:
+          exclude: "{config.json}"
+          include: "*.yaml"
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
+          - ApplyOutOfSyncOnly=true
+          - Validate=true
+        automated:
+          prune: false
+          selfHeal: false

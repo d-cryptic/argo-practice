@@ -1,0 +1,24 @@
+apiVersion: batch/v1 
+kind: Job 
+metadata:
+  name: flock-postsync-notification
+  annotations:
+    argocd.argoproj.io/hook: PostSync 
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+spec:
+  template:
+    spec:
+      containers:
+      - name: flock-notification
+        image: curlimages/curl 
+        command:
+          - "curl"
+          - "-X"
+          - "POST"
+          - "-H"
+          - "Content-Type: application/json"
+          - "-d"
+          - "{\"text\": \"Sync Done\"}"
+          - "https://api.flock.com/hooks/sendMessage/fbaaa402-40f1-4947-bcd4-330e284e7a04"
+      restartPolicy: Never
+  backoffLimit: 2   

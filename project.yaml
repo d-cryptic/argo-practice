@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: argo-project
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: "To allow access to argo apps"
+  sourceRepos:
+    - "*"
+  destinations:
+    - name: in-cluster
+      namespace: argocd
+      server: https://kubernetes.default.svc
+    - name: in-cluster
+      namespace: default
+      server: https://kubernetes.default.svc
+    - name: gke_prometheus-396605_us-central1-c_cluster-2
+      namespace: default
+      server: https://35.232.134.243

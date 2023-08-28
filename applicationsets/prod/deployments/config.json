@@ -1,0 +1,6 @@
+{
+  "namespace": "prod",
+  "name": "wordpress",
+  "project": "default",
+  "cluster": "in-cluster"
+}
