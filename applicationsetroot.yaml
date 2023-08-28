@@ -11,10 +11,7 @@ spec:
         repoURL: https://github.com/d-cryptic/argo-practice.git
         revision: master
         files:
-          - path: applicationsets/staging/deployments/config.json
-          - path: applicationsets/staging/hooks/config.json
-          - path: applicationsets/prod/deployments/config.json
-          - path: applicationsets/prod/hooks/config.json
+          - path: applicationsets/**/**/config.json
   template:
     metadata:
       name: "{{name}}"
@@ -22,12 +19,12 @@ spec:
     spec:
       destination:
         namespace: "{{namespace}}"
-        name: "{{cluster}}"
+        server: https://kubernetes.default.svc
       project: "{{project}}"
       source:
         path: "{{path}}"
         repoURL: https://github.com/d-cryptic/argo-practice.git
-        targetRevision: master
+        targetRevision: HEAD
         directory:
           exclude: "{config.json}"
           include: "*.yaml"
