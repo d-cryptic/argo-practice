@@ -43,6 +43,7 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/applicatio
 
 ### For Root Application
 
+```bash
 ├── base
 │ └── kustomization.yaml
 ├── envs
@@ -57,6 +58,7 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/applicatio
 ├── README.md
 ├── root.yaml
 |── secret.yaml
+```
 
 - Secret.yaml consists of webhook secret
 - project.yaml consists of clusters access
@@ -67,6 +69,7 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/applicatio
 
 ### For ApplicationSet
 
+```bash
 ├── applicationsetroot.yaml
 ├── applicationsets
 │ ├── prod
@@ -100,6 +103,7 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/applicatio
 │ ├── presync.yaml
 │ └── sync.yaml
 ├── project.yaml
+```
 
 - ApplicationSet uses git generator approach to create argocd applications
 - Values are taken dynamically using go templates
